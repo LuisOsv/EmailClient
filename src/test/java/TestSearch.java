@@ -1,17 +1,20 @@
 import core.*;
 import interfaces.IFolder;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-public class Demo {
+public class TestSearch {
 
-    public static void main(String args[]) {
+    @Test
+    public void testSearchBySubject() {
         // creating messages
-        Message messageTest1 = new Message("subject testing1","luis@gmail.com", "junior@gmail.com",
+        Message messageTest1 = new Message("subject test1 regression","luis@gmail.com", "junior@gmail.com",
                 "queen@tx.com", "this is a test");
-        Message messageTest2 = new Message("subject testing2","luis@gmail.com", "junior@gmail.com",
+        Message messageTest2 = new Message("subject test2 regression","luis@gmail.com", "junior@gmail.com",
                 "queen@tx.com", "this is a test");
-        Message messageTest3 = new Message("subject testing3","luis@gmail.com", "junior@gmail.com",
+        Message messageTest3 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
                 "queen@tx.com", "this is a test");
 
         // creating folders
@@ -31,12 +34,9 @@ public class Demo {
         rootDirectory.addFolder(sent);
         rootDirectory.addFolder(trash);
 
-//        rootDirectory.showMessages();
-
-        MessageSearchVisitor visitor = new MessageSearchVisitor("testing2");
+        MessageSearchVisitor visitor = new MessageSearchVisitor("regression");
         visitor.search(Arrays.asList(inbox, sent, trash, luisFolder));
         visitor.showResults();
-
+        Assert.assertTrue(visitor.getResults().size() == 2);
     }
-
 }

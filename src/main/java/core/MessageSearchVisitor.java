@@ -15,8 +15,10 @@ public class MessageSearchVisitor implements Visitor {
         this.messageSubject = messageSubject;
     }
 
-    public void search(IFolder visitable) {
-        visitable.accept(this);
+    public void search(List<IFolder> visitables) {
+        visitables.forEach(
+                visit -> visit.accept(this)
+        );
     }
 
     public void showResults() {
@@ -27,6 +29,10 @@ public class MessageSearchVisitor implements Visitor {
         } else {
             System.out.println(String.format("No messages with %s subject", messageSubject));
         }
+    }
+
+    public List<Message> getResults() {
+        return results;
     }
 
     @Override
@@ -57,4 +63,6 @@ public class MessageSearchVisitor implements Visitor {
                 }
         );
     }
+
+
 }
