@@ -15,6 +15,10 @@ public class TestSearch {
                 "queen@tx.com", "this is a test");
         Message messageTest3 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
                 "queen@tx.com", "this is a test");
+        Message messageTest4 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
+                "queen@tx.com", "this is a test with virus");
+        Message messageTest5 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
+                "queen@tx.com", "this is a test with virus");
 
         // creating folders
         IFolder luisFolder = new RegularFolder("luisFolder");
@@ -24,6 +28,8 @@ public class TestSearch {
 
         // adding messages to folders
         inbox.addMessage(messageTest1);
+        inbox.addMessage(messageTest4);
+        inbox.addMessage(messageTest5);
         luisFolder.addMessage(messageTest2);
         luisFolder.addMessage(messageTest3);
 
@@ -35,9 +41,10 @@ public class TestSearch {
 
         MessageSearchVisitor visitor = new MessageSearchVisitor.SearchBuilder()
                 .subjectContains("regression")
+                .andBodyContains("virus")
                 .build();
         visitor.search(rootDirectory);
         visitor.showResults();
-        Assert.assertTrue(visitor.getResults().size() == 2);
+        Assert.assertTrue(visitor.getResults().size() == 4);
     }
 }

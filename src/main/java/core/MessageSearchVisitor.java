@@ -58,7 +58,6 @@ public class MessageSearchVisitor implements Visitor {
 
 
     private MessageSearchVisitor() {
-
     }
 
     public String getSubject() {
@@ -144,6 +143,9 @@ public class MessageSearchVisitor implements Visitor {
         messages.forEach(
                 message -> {
                     if (message.getSubject().contains(subject)) {
+                        results.add(message);
+                    }
+                    if (message.getBody().contains(body)) {
                         results.add(message);
                     }
                 }
