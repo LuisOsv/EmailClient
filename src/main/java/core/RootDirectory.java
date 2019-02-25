@@ -31,4 +31,8 @@ public class RootDirectory {
     public void removeFolder(IFolder folder) {
         folders.remove(folder);
     }
+
+    public List<IFolder> getFolders() {
+        return folders;
+    }
 }

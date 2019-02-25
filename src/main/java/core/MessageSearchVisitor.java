@@ -1,8 +1,6 @@
 package core;
 
-import interfaces.IFolder;
 import interfaces.Visitor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +13,16 @@ public class MessageSearchVisitor implements Visitor {
         this.messageSubject = messageSubject;
     }
 
-    public void search(List<IFolder> visitables) {
-        visitables.forEach(
+    public void search(RootDirectory directory) {
+        directory.getFolders().forEach(
                 visit -> visit.accept(this)
         );
     }
 
     public void showResults() {
-        if(results.size() > 0) {
-            for (Message message: results) {
-                System.out.println(message.toString()+ "\n");
+        if (results.size() > 0) {
+            for (Message message : results) {
+                System.out.println(message.toString() + "\n");
             }
         } else {
             System.out.println(String.format("No messages with %s subject", messageSubject));
@@ -57,7 +55,7 @@ public class MessageSearchVisitor implements Visitor {
     private void searchMessages(List<Message> messages) {
         messages.forEach(
                 message -> {
-                    if(message.getSubject().contains(messageSubject)) {
+                    if (message.getSubject().contains(messageSubject)) {
                         results.add(message);
                     }
                 }

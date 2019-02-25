@@ -31,10 +31,9 @@ public class Demo {
         rootDirectory.addFolder(sent);
         rootDirectory.addFolder(trash);
 
-//        rootDirectory.showMessages();
 
         MessageSearchVisitor visitor = new MessageSearchVisitor("testing2");
-        visitor.search(Arrays.asList(inbox, sent, trash, luisFolder));
+        visitor.search(rootDirectory);
         visitor.showResults();
 
     }

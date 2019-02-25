@@ -35,7 +35,7 @@ public class TestSearch {
         rootDirectory.addFolder(trash);
 
         MessageSearchVisitor visitor = new MessageSearchVisitor("regression");
-        visitor.search(Arrays.asList(inbox, sent, trash, luisFolder));
+        visitor.search(rootDirectory);
         visitor.showResults();
         Assert.assertTrue(visitor.getResults().size() == 2);
     }
