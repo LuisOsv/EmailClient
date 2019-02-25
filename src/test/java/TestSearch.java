@@ -3,7 +3,6 @@ import interfaces.IFolder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 
 public class TestSearch {
 
@@ -34,7 +33,9 @@ public class TestSearch {
         rootDirectory.addFolder(sent);
         rootDirectory.addFolder(trash);
 
-        MessageSearchVisitor visitor = new MessageSearchVisitor("regression");
+        MessageSearchVisitor visitor = new MessageSearchVisitor.SearchBuilder()
+                .subjectContains("regression")
+                .build();
         visitor.search(rootDirectory);
         visitor.showResults();
         Assert.assertTrue(visitor.getResults().size() == 2);
