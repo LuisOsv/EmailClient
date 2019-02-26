@@ -121,11 +121,6 @@ public class MessageSearchVisitor implements Visitor {
     }
 
     @Override
-    public void visit(RootDirectory rootFolder) {
-
-    }
-
-    @Override
     public void visit(RegularFolder regularFolder) {
         regularFolder.getFolders().forEach(
                 folder -> searchMessages(folder.getMessages())
