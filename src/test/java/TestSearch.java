@@ -16,9 +16,9 @@ public class TestSearch {
         Message messageTest3 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
                 "queen@tx.com", "this is a test");
         Message messageTest4 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
-                "queen@tx.com", "this is a test with virus");
+                "queen@tx.com", "this is a test with mix test data");
         Message messageTest5 = new Message("subject test3 smoke","luis@gmail.com", "junior@gmail.com",
-                "queen@tx.com", "this is a test with virus");
+                "queen@tx.com", "this is a test with mix test data");
 
         // creating folders
         IFolder luisFolder = new RegularFolder("luisFolder");
@@ -41,7 +41,7 @@ public class TestSearch {
 
         MessageSearchVisitor visitor = new MessageSearchVisitor.SearchBuilder()
                 .subjectContains("regression")
-                .andBodyContains("virus")
+                .andBodyContains("test data")
                 .build();
         visitor.search(rootDirectory);
         visitor.showResults();
