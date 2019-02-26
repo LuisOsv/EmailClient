@@ -43,7 +43,7 @@ public class TestSearch {
         rootDirectory.addFolder(sent);
         rootDirectory.addFolder(trash);
 
-        System.out.println("    search message by subject and body");
+        System.out.println("    search messages with subject contains \"regression\" and body contains \"test data\"");
         MessageSearchVisitor visitor = new MessageSearchVisitor.SearchBuilder()
                 .subjectContains("regression")
                 .andBodyContains("test data")
